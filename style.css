@@ -1,0 +1,115 @@
+
+*{
+	margin:0px;
+	padding:0px;
+}
+.container{
+position:relative;
+	width:960px;
+	margin:auto;
+	margin-top:44px;
+}
+
+.fleft{
+	float:left;
+}
+.fright{
+	float:right;
+}
+.clear{
+	clear:both;}
+
+
+h2{
+	font-size:20px;
+}
+
+.addNew{
+
+	padding:9px;
+
+}
+
+table.list{
+	width:100%;
+
+
+}
+table.list th{
+	background-color:#0E5196;
+	color:#FFFFFF;
+	padding:9px;
+
+	
+}
+table.list td{
+  padding:20px;
+
+  text-align:center;
+	
+}
+
+table.list tr{
+	background:#EEEEEE; 
+}
+
+.modal{
+	 
+
+	position:absolute;
+
+	width:555px;
+	top:0px;
+	background:cyan;
+	
+	margin:0 auto;
+	margin-left:100px;
+}
+
+.modalContainer{
+	width:555px;
+	background:#FFFFFF;
+	margin:auto;
+
+}
+.modalHeading{
+	padding:6px;
+	background:#06307C;
+	color:#FFFFFF;
+}
+
+.modalContent{
+	min-height:333px;
+	padding:44px;
+}
+
+.close{
+float:right;
+border:none;
+padding:2px 9px;
+background:red;
+}
+
+table.form input,table.form td{
+padding:6px;
+	
+}
+
+p.successMessage{
+	
+	background:#d2bdbd;
+	border-left:4px solid cyan;
+	color:green;
+	padding:9px;
+	margin:22px 0px;
+}
+
+p.errorMessage{
+
+background-color:green;
+	border-left:2px solid blue;
+	color:red;
+	padding:4px;
+	margin:22px 0px;
+	
+}

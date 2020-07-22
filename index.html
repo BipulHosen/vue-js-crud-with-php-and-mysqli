@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+
+<head>
+	<title>vuejs crud with php and myasql</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+
+</head>
+<body>
+<div id="root">
+	<div class="container">
+	<h2 class="fleft">List of Users</h2>
+	<button class="fright addNew" @click="showingModal=true">Add new</button>
+	<div class="clear"></div>
+	<hr>
+	<p class="errorMessage" v-if="ErrorMessage">{{ErrorMessage}}</p>
+	<p class="successMessage" v-if="SuccessMessage">{{SuccessMessage}}</p>
+
+	<table class="list">
+		<tr>
+			<th>ID</th>
+			<th>Username</th>
+			<th>Email</th>
+			<th>Mobile</th>
+			<th>Edit</th>
+			<th>Delete</th>
+			
+		</tr>
+
+	
+			<tr v-for="user in users">
+				<td>{{user.id}}</td>
+				<td>{{user.username}}</td>
+				<td>{{user.email}}</td>
+				<td>{{user.mobile}}</td>
+				
+				<td @click="showingEditModal=true; selectUser(user);">Edit</td>
+				<td @click="showingDltModal=true; selectUser(user);">Delete</td>
+
+			</tr>
+		
+	</table>
+
+
+	<div class="modal" v-if="showingModal">
+        <div class=moalContainer>
+  	 	    <div class="modalHeading">Add new user
+  	 		     <button class="close" @click="showingModal=false">X</button>
+
+  	 	  </div>
+        	<div class="modalContent">
+   		
+   		         <table class="form">
+			   			<tr>
+			   				<th>Username</th>
+			   				<th>:</th>
+			   				<td><input type="text" name="username" v-model="newUser.username"></td>
+			   			</tr>
+
+			   			<tr>
+			   				<th>Email</th>
+			   				<th>:</th>
+			   				<td><input type="email" name="email" v-model="newUser.email"></td>
+			   			</tr>
+			   			<tr>
+			   				<th>Mobile</th>
+			   				<th>:</th>
+			   				<td><input type="text" name="mobile" v-model="newUser.mobile"></td>
+
+			   			</tr>
+
+			   			<tr>
+			   				<th></th>
+			   				<th></th>
+			   				<td><button  @click="showingModal=false; saveUser();">Save</button></td>
+			   				
+			   			</tr>
+			   			
+
+   	     	 </table>
+    	</div>
+  </div>
+   	
+   </div>
+
+   <div class="modal" id="editModal" v-if="showingEditModal">
+        <div class=moalContainer>
+  	 	    <div class="modalHeading">Edit user
+  	 		     <button class="close" @click="showingEditModal=false">X</button>
+
+  	 	  </div>
+        	<div class="modalContent">
+   		
+   		         <table class="form">
+			   			<tr>
+			   				<th>Username</th>
+			   				<th>:</th>
+			   				<td><input type="text" name="username"  v-model="clickUser.username"></td>
+			   			</tr>
+
+			   			<tr>
+			   				<th>Email</th>
+			   				<th>:</th>
+			   				<td><input type="email" name="email" v-model="clickUser.email" ></td>
+			   			</tr>
+			   			<tr>
+			   				<th>Mobile</th>
+			   				<th>:</th>
+			   				<td><input type="text" name="mobile"  v-model="clickUser.mobile"></td>
+			   			</tr>
+
+			   			<tr>
+			   				<th></th>
+			   				<th></th>
+			   				<td><button @click="showingEditModal=false; updateUser();">Update</button></td>
+			   				
+			   			</tr>
+
+   	     	 </table>
+    	</div>
+  </div>
+   	
+   </div>
+<div class="modal" id="dltModal" v-if="showingDltModal">
+        <div class=moalContainer>
+  	 	    <div class="modalHeading">Are you sure to delete?
+  	 		     <button class="close" @click="showingDltModal=false">X</button>
+  	 		     
+
+
+  	 	  </div>
+        	<div class="modalContent">
+   		
+   		        <p>You are going to delte...  "{{clickUser.username}}"  ..</p>
+   		        <br><br>
+   		        <button  @click="showingDltModal=false; deleteUser()">Yes</button>
+   		        <button  @click="showingDltModal=false">No</button>
+     	</div>
+  </div>
+   	
+   </div>
+
+
+
+
+   </div>
+
+
+
+   
+</div>
+	<script type="text/javascript" src="vue.js"></script>
+	<script type="text/javascript" src="axios.js"></script>
+
+	<script type="text/javascript" src="app.js"></script>
+</body>
+</html>
